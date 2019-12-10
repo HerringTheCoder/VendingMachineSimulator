@@ -8,9 +8,11 @@ namespace VendingMachineApp.Models
     {
         public List<Product> Products { get; private set; } = new List<Product>();
 
-        public double Credit { get; set; } = 0;               
+        public double Credit { get; set; } = 0;           
            
         public List<Denomination> Money { get; set; }
+
+        public string Log { get; set; }
 
         public VendingMachine()
          {

@@ -8,4 +8,22 @@
     <AssemblyName>VendingMachineApp</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Cola.jpg" />
+    <None Remove="Resources\Fanta.jpg" />
+    <None Remove="Resources\Github.jpg" />
+    <None Remove="Resources\github.png" />
+    <None Remove="Resources\Sprite.jpg" />
+    <None Remove="Resources\ZywiecZdroj.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Cola.jpg" />
+    <Resource Include="Resources\Fanta.jpg" />
+    <Resource Include="Resources\Github.jpg" />
+    <Resource Include="Resources\Github.png" />
+    <Resource Include="Resources\Sprite.jpg" />
+    <Resource Include="Resources\ZywiecZdroj.png" />
+  </ItemGroup>
+
 </Project>

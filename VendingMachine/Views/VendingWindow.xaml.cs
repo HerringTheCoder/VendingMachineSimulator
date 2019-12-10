@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using VendingMachineApp.Models;
-
+using VendingMachineApp.ViewModels;
 
 namespace VendingMachineApp.Views
 {
@@ -14,19 +15,20 @@ namespace VendingMachineApp.Views
     {
         public VendingWindow()
         {
+            this.DataContext = new VendingViewModel();
             InitializeComponent();
+            
         }
-
+                      
         private void RepoButton_Click(object sender, RoutedEventArgs e)
         {
-            _ = new VendingMachine();
-            /* ProcessStartInfo psi = new ProcessStartInfo
-             {
-                 FileName = "https://github.com/HerringTheCoder?tab=repositories",
-                 UseShellExecute = true
-             };
-             Process.Start(psi);
-             */
-        }
+
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "https://github.com/HerringTheCoder/VendingMachineSimulator",
+                UseShellExecute = true
+            };
+            Process.Start(psi);
+        }          
     }
 }

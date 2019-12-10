@@ -5,8 +5,115 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VendingMachineApp.Views"
         mc:Ignorable="d"
-        Title="VendingWindow" Height="450" Width="800">
+        Title="VendingWindow" ResizeMode="NoResize" Height="650" Width="400" 
+        WindowStartupLocation="CenterScreen" Background="#FFCB8E0D">
+    <Window.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#FFB6B6B6"></Setter>
+            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="90"></Setter>
+            <Setter Property="Width" Value="144"></Setter>
+            <Setter Property="Margin" Value="0,10,0,0"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter> 
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Button x:Name="RepoButton" Click="RepoButton_Click"></Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="6" BorderBrush="Gray" Background="LightGray" BorderThickness="2" Grid.Column="0">
+            <!-- Functionalities-->
+            <StackPanel Grid.Column="0" >
+                <!--System Log-->
+                <TextBox x:Name="Info" Height="150" Background="Black" IsReadOnly="True" 
+                       FontFamily="Courier New" FontSize="15" Foreground="LimeGreen" TextWrapping="WrapWithOverflow">
+                    
+                    Welcome to our vending machine! Choose your coin, confirm it with 'Add' button and
+                    choose your desired product. Press reset to cancel transaction.
+                </TextBox>
+                
+                <!-- Insert Button-->
+                <Button x:Name="InsertButton" Command="{Binding InsertCommand}"
+                        Content="Add+" FontSize="24" VerticalContentAlignment="Center">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="360"/>
+                            <Setter Property="Height" Value="80"/>
+                            <Setter Property="Width" Value="80"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                
+                <!-- Denominations selector-->
+                <ComboBox Width="100" SelectedIndex="0" HorizontalContentAlignment="Center" FontSize="20" Margin="0,10,0,10">
+                    <ComboBoxItem>5zł</ComboBoxItem>
+                    <ComboBoxItem>2zł</ComboBoxItem>
+                    <ComboBoxItem>1zł</ComboBoxItem>
+                    <ComboBoxItem>50gr</ComboBoxItem>
+                    <ComboBoxItem>20gr</ComboBoxItem>
+                    <ComboBoxItem>10gr</ComboBoxItem>
+                </ComboBox>
+                <!-- Credit -->
+                <TextBox IsReadOnly="True" x:Name="Credit" Height="30" Background="Black" 
+                       FontFamily="Courier New" FontSize="20" Foreground="OrangeRed" TextWrapping="WrapWithOverflow"
+                         HorizontalContentAlignment="Center">
+                    Credit: 0.00
+                </TextBox>
+                
+                <!-- Reset button-->
+                <Button x:Name="ResetButton" Command="{Binding ResetCommand}"
+                        Content="Reset" FontSize="24" VerticalContentAlignment="Center">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="360"/>
+                            <Setter Property="Height" Value="80"/>
+                            <Setter Property="Width" Value="80"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Label></Label>
+                <Button x:Name="RepoButton" Click="RepoButton_Click">
+                    <Button.Content>
+                        <Image Source="pack://application:,,,/Resources/Github.png"></Image>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Border>
+        <!-- Products-->
+        <Border CornerRadius="6" BorderBrush="Gray" Background="LightGray" BorderThickness="2" Grid.Column="1">
+            <StackPanel Grid.Column="1">
+                <Label></Label>
+                <Button x:Name="FirstProductButton" Command="{Binding FirstCommand}">
+                    <Button.Content>
+                        <Image Source="pack://application:,,,/Resources/Cola.jpg"></Image>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="SecondProductButton" Command="{Binding SecondCommand}">
+                    <Button.Content>
+                        <Image Source="pack://application:,,,/Resources/ZywiecZdroj.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="ThirdProductButton" Command="{Binding ThirdCommand}">
+                    <Button.Content>
+                        <Image Source="pack://application:,,,/Resources/Sprite.jpg"></Image>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="FourthProductButton" Command="{Binding FourthCommand}">
+                    <Button.Content>
+                        <Image Source="pack://application:,,,/Resources/Fanta.jpg"></Image>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

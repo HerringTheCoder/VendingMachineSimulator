@@ -16,7 +16,5 @@ namespace VendingMachineApp.Models
             this.Price = price;
             this.Amount = amount;
         }
-
-
     }
 }
