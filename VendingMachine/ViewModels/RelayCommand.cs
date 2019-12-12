@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace VendingMachineApp.ViewModels
@@ -9,7 +7,6 @@ namespace VendingMachineApp.ViewModels
     {
         Action<object> _execteMethod;
         Func<object, bool> _canexecuteMethod;
-
 
         public RelayCommand(Action<object> execteMethod, Func<object, bool> canexecuteMethod)
         {

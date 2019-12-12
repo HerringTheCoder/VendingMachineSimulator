@@ -20,7 +20,6 @@
   <ItemGroup>
     <Resource Include="Resources\Cola.jpg" />
     <Resource Include="Resources\Fanta.jpg" />
-    <Resource Include="Resources\Github.jpg" />
     <Resource Include="Resources\Github.png" />
     <Resource Include="Resources\Sprite.jpg" />
     <Resource Include="Resources\ZywiecZdroj.png" />

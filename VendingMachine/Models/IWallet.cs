@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace VendingMachineApp.Models
 {
     interface IWallet
     {
-        List<Coin> Wallet {get;set;}
-        public void InsertCoin(decimal SelectedCoin);       
+        List<Coin> Wallet { get; set; }
+        public void InsertCoin(decimal SelectedCoin);
     }
 }

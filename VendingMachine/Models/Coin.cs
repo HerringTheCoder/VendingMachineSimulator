@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace VendingMachineApp.Models
 {
     class Coin
     {
         private decimal _value;
-        public decimal Value {
+        public decimal Value
+        {
             get { return _value; }
-            set {
-                if (!ControlList.Contains(value))
-                    throw new NotSupportedException();
+            set
+            {
+                if (!ControlList.Contains(value)) //Throws 'ArgumentOutOfRange' Exception if assigned coin value is not a part of ControlList                     
+                    throw new ArgumentOutOfRangeException("Coin denomination not available");
                 else
                     _value = value;
             }
-                }
-        public static List<decimal> ControlList { get; private set; } = new List<decimal>
+        }
+        /*List of available coin values
+         * this field is declared static, because it doesn't manage state
+         * and is effectively read-only (no setter available) */
+        public static List<decimal> ControlList { get; } = new List<decimal>
              {
                 5.0m,
                 2.0m,
@@ -24,7 +28,7 @@ namespace VendingMachineApp.Models
                 0.5m,
                 0.2m,
                 0.1m
-            }; 
+            };
         public Coin(decimal val)
         {
             this.Value = val;

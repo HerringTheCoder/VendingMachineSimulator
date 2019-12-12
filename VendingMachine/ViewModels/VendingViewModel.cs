@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Windows;
 using System.Windows.Input;
 using VendingMachineApp.Models;
 
@@ -28,9 +26,10 @@ namespace VendingMachineApp.ViewModels
         public VendingMachine VMachine
         {
             get => _vmachine;
-            set {
+            set
+            {
                 _vmachine = value;
-               OnPropertyChanged("VMachine");                
+                OnPropertyChanged("VMachine");
             }
         }
         private decimal _credit;
@@ -41,10 +40,10 @@ namespace VendingMachineApp.ViewModels
             {
                 _credit = value;
                 CreditInfo = "Credit: " + value;
-                OnPropertyChanged("Credit");                             
+                OnPropertyChanged("Credit");
             }
-            
-        }       
+
+        }
         public Dictionary<string, Coin> AcceptedCoins { get; set; } = new Dictionary<string, Coin>();
         #endregion
 
@@ -55,7 +54,7 @@ namespace VendingMachineApp.ViewModels
             SecondCommand = new RelayCommand(SecondCommand_Execute, SecondCommand_CanExecute);
             ThirdCommand = new RelayCommand(ThirdCommand_Execute, ThirdCommand_CanExecute);
             FourthCommand = new RelayCommand(FourthCommand_Execute, FourthCommand_CanExecute);
-            ResetCommand = new RelayCommand(ResetCommand_Execute, ResetCommand_CanExecute);
+            ReturnCommand = new RelayCommand(ReturnCommand_Execute, ReturnCommand_CanExecute);
             InsertCommand = new RelayCommand(InsertCommand_Execute, InsertCommand_CanExecute);
             AcceptedCoins.Add("5zł", new Coin(5.0m));
             AcceptedCoins.Add("2zł", new Coin(2.0m));
@@ -77,18 +76,16 @@ namespace VendingMachineApp.ViewModels
         private void InsertCommand_Execute(object parameter)
         {
             decimal InsertedCoinValue = SelectedCoin.Value.Value;
-            VMachine.InsertCoin(InsertedCoinValue);
-            VMachine.Log = (InsertedCoinValue < 1.0m) ? "Added "+ Convert.ToInt32(InsertedCoinValue*100)+"gr" : "Added " + Convert.ToInt32(InsertedCoinValue) + "zł";
+            VMachine.InsertCoin(InsertedCoinValue);           
             CreditInfo = "Credit: " + VMachine.Credit;
-            Debug.WriteLine("Credit was set to " + VMachine.Credit);
-            //MessageBox.Show("Credit was set to " + VMachine.Credit);
+            Debug.WriteLine("Credit was set to " + VMachine.Credit);            
         }
-        public ICommand ResetCommand { get; set; }
-        private bool ResetCommand_CanExecute(object parameter)
+        public ICommand ReturnCommand { get; set; }
+        private bool ReturnCommand_CanExecute(object parameter)
         {
             return true;
         }
-        private void ResetCommand_Execute(object parameter)
+        private void ReturnCommand_Execute(object parameter)
         {
             VMachine.ResetCredit();
             CreditInfo = "Credit: " + VMachine.Credit;
@@ -98,8 +95,8 @@ namespace VendingMachineApp.ViewModels
         #region Product Commands
         public ICommand FirstCommand { get; set; }
         private bool FirstCommand_CanExecute(object parameter)
-        {          
-           return true;
+        {
+            return true;
         }
         private void FirstCommand_Execute(object parameter)
         {
@@ -138,7 +135,7 @@ namespace VendingMachineApp.ViewModels
         {
             VMachine.SellProduct("Fanta");
             Credit = VMachine.Credit;
-        }       
+        }
         #endregion
     }
 }

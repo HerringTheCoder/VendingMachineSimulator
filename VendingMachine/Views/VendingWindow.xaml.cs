@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using VendingMachineApp.Models;
 using VendingMachineApp.ViewModels;
 
 namespace VendingMachineApp.Views
@@ -17,9 +13,9 @@ namespace VendingMachineApp.Views
         {
             this.DataContext = new VendingViewModel();
             InitializeComponent();
-            
+
         }
-                      
+
         private void RepoButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -29,6 +25,6 @@ namespace VendingMachineApp.Views
                 UseShellExecute = true
             };
             Process.Start(psi);
-        }          
+        }
     }
 }
