@@ -4,10 +4,10 @@ using System.Text;
 
 namespace VendingMachineApp.Models
 {
-    class Denomination
+    class Coin
     {
-        private double _value;
-        public double Value {
+        private decimal _value;
+        public decimal Value {
             get { return _value; }
             set {
                 if (!ControlList.Contains(value))
@@ -16,16 +16,16 @@ namespace VendingMachineApp.Models
                     _value = value;
             }
                 }
-        public List<double> ControlList { get; private set; } = new List<double>
+        public static List<decimal> ControlList { get; private set; } = new List<decimal>
              {
-                0.1,
-                0.2,
-                0.5,
-                1.0,
-                2.0,
-                5.0
+                5.0m,
+                2.0m,
+                1.0m,
+                0.5m,
+                0.2m,
+                0.1m
             }; 
-        public Denomination(double val)
+        public Coin(decimal val)
         {
             this.Value = val;
         }

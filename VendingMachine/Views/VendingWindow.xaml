@@ -36,10 +36,8 @@
             <StackPanel Grid.Column="0" >
                 <!--System Log-->
                 <TextBox x:Name="Info" Height="150" Background="Black" IsReadOnly="True" 
-                       FontFamily="Courier New" FontSize="15" Foreground="LimeGreen" TextWrapping="WrapWithOverflow">
-                    
-                    Welcome to our vending machine! Choose your coin, confirm it with 'Add' button and
-                    choose your desired product. Press reset to cancel transaction.
+                       FontFamily="Courier New" FontSize="15" Foreground="LimeGreen" TextWrapping="WrapWithOverflow"
+                         Text="{Binding VMachine.Log, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
                 
                 <!-- Insert Button-->
@@ -55,19 +53,14 @@
                 </Button>
                 
                 <!-- Denominations selector-->
-                <ComboBox Width="100" SelectedIndex="0" HorizontalContentAlignment="Center" FontSize="20" Margin="0,10,0,10">
-                    <ComboBoxItem>5zł</ComboBoxItem>
-                    <ComboBoxItem>2zł</ComboBoxItem>
-                    <ComboBoxItem>1zł</ComboBoxItem>
-                    <ComboBoxItem>50gr</ComboBoxItem>
-                    <ComboBoxItem>20gr</ComboBoxItem>
-                    <ComboBoxItem>10gr</ComboBoxItem>
+                <ComboBox x:Name="CoinsComboBox" Width="100" SelectedIndex="0" HorizontalContentAlignment="Center" FontSize="20" Margin="0,10,0,10"
+                        ItemsSource="{Binding AcceptedCoins}" DisplayMemberPath="Key" SelectedValue="{Binding SelectedCoin, Mode=OneWayToSource}" >
+                   
                 </ComboBox>
                 <!-- Credit -->
                 <TextBox IsReadOnly="True" x:Name="Credit" Height="30" Background="Black" 
                        FontFamily="Courier New" FontSize="20" Foreground="OrangeRed" TextWrapping="WrapWithOverflow"
-                         HorizontalContentAlignment="Center">
-                    Credit: 0.00
+                         HorizontalContentAlignment="Center" Text="{Binding CreditInfo}">
                 </TextBox>
                 
                 <!-- Reset button-->

@@ -4,8 +4,9 @@ using System.Text;
 
 namespace VendingMachineApp.Models
 {
-    interface IMoney
+    interface IWallet
     {
-        List<Denomination> Money {get;set;}
+        List<Coin> Wallet {get;set;}
+        public void InsertCoin(decimal SelectedCoin);       
     }
 }

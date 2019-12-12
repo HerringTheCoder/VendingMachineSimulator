@@ -4,10 +4,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
-
-namespace VendingMachineApp.ViewModels
+namespace VendingMachineApp.Models
 {
-    class BaseViewModel : INotifyPropertyChanged
+    class BaseModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -18,7 +17,7 @@ namespace VendingMachineApp.ViewModels
                 return;
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            Debug.WriteLine("Viewmodel "+propertyName + " has been updated.");
+            Debug.WriteLine("Model "+propertyName+" has been updated.");
         }
         #endregion
     }
