@@ -43,7 +43,7 @@ namespace VendingMachineApp.Models
                 CalculateRemainder(obj.Price);
                 /* Choose one of the two lines below to decide if you want to return money after each purchase */
                 //ResetCredit("Sold " + obj.Name + " for: " + obj.Price + "zł\nAmount left: " + obj.Amount + "\n");
-                Log = "Sold " + obj.Name + " for: " + obj.Price + "zł\nAmount left: " + obj.Amount + "\n";               
+                Log = "Sold " + obj.Name + " for: " + obj.Price + "zł\nAmount left: " + obj.Amount + "\n"; //Comment or Remove this line if above ResetCredit(...) is active    
             }
             else if (Credit < obj.Price && obj.Amount > 0)
             {
