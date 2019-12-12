@@ -41,8 +41,9 @@ namespace VendingMachineApp.Models
             {
                 obj.Amount--;
                 CalculateRemainder(obj.Price);
-                Log = "Sold " + obj.Name + " for: " + obj.Price + "zł\nAmount left: " + obj.Amount + "\n";
-                Debug.WriteLine("Credit after recalculation equals: {0}", Credit);
+                /* Choose one of the two lines below to decide if you want to return money after each purchase */
+                //ResetCredit("Sold " + obj.Name + " for: " + obj.Price + "zł\nAmount left: " + obj.Amount + "\n");
+                Log = "Sold " + obj.Name + " for: " + obj.Price + "zł\nAmount left: " + obj.Amount + "\n";               
             }
             else if (Credit < obj.Price && obj.Amount > 0)
             {
@@ -86,11 +87,11 @@ namespace VendingMachineApp.Models
             Log = (coinValue < 1.0m) ? "Added " + Convert.ToInt32(coinValue * 100) + "gr" : "Added " + Convert.ToInt32(coinValue) + "zł";
         }
         //Simulates returning credit by removing Coins from virtual wallet and listing them for user // TODO: sending coins to user's wallet
-        public void ResetCredit()
+        public void ResetCredit(string input="")
         {
-            string summary = "Returned coins: \n";
+            string summary = input+"Returned coins: \n";
             foreach (Coin item in Wallet)
-            {
+            {   
                 summary += (item.Value < 1.0m) ? Convert.ToInt32(100 * item.Value) + "gr, " : Convert.ToInt32(item.Value) + "zł, ";  //Converting to int is safe, because both input numbers will always have .0m format          
             }
             Wallet.Clear();
